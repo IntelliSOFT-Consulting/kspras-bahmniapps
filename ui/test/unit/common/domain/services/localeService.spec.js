@@ -6,7 +6,7 @@ describe('localeService', function () {
     var _$http;
     var localesList = "en, es, fr";
     var defaultLocale = "en";
-    var loginText = "KSPRAS LOGIN";
+    var loginText = "KSPRAS EMR LOGIN";
     var localeLangs = "locale codes language";
 
     beforeEach(function(){
