@@ -27,6 +27,14 @@
                             </select>
                         </div>
 
+                        <div class="field-value" id="currentLocations">
+                            <select id="selectLocation" 
+                                    required>
+                                    <option value="">--Select Location--</option>
+                                    <option ng-repeat="location in currentLocations.locations" ng-value="location.uuid">{{location.display}}</option>
+                            </select>
+                        </div>
+
                         <div class="field-value field-value-has-identifier">
                             <input type="text" id="registrationNumber" ng-model="patient.primaryIdentifier.registrationNumber"
                                    placeholder="{{:: getTranslatedPatientIdentifier(patient.primaryIdentifier.identifierType.description)}}" non-blank="patient.primaryIdentifier.isIdentifierRequired()" pattern-validate

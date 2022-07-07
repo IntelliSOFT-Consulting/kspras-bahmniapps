@@ -68,6 +68,26 @@ angular.module('bahmni.registration').factory('initialization',
                 return appService.checkPrivilege("app:registration");
             };
 
+            var getLocations = function () {
+                // Get locations from backend
+                var deferrable = $q.defer();
+                locationService.getAllByTag("Login Location").then(
+                    function (response) {
+                        deferrable.resolve({locations: response.data.results});
+                    },
+                    function (response) {
+                        deferrable.reject();
+                        if (response.status) {
+                            response = 'MESSAGE_START_OPENMRS';
+                        }
+                        messagingService.showMessage('error', response);
+                    }
+                );
+                return deferrable.promise.then(function (locations) {
+                    $rootScope.locations = locations;
+                });
+            };
+
             return function () {
                 return spinner.forPromise(authenticator.authenticateUser()
                 .then(initApp)
@@ -78,6 +98,7 @@ angular.module('bahmni.registration').factory('initialization',
                 .then(loggedInLocation)
                 .then(loadValidators(appService.configBaseUrl(), "registration"))
                 .then(mergeFormConditions)
+                .then(getLocations)
             );
             };
         }]
