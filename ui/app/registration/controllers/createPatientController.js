@@ -102,6 +102,7 @@ angular.module('bahmni.registration')
                 prepopulateDefaultsInFields();
                 expandSectionsWithDefaultValue();
                 getCurrentLocations();
+                $scope.patient['Registration Location'] = $scope.loggedInLocation.display;
                 $scope.patientLoaded = true;
             };
 
