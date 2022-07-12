@@ -12,6 +12,12 @@ angular.module('bahmni.registration')
             $scope.showEnterID = configValueForEnterId === null ? true : configValueForEnterId;
             $scope.today = Bahmni.Common.Util.DateTimeFormatter.getDateWithoutTime(dateUtil.now());
             $scope.moduleName = appService.getAppDescriptor().getConfigValue('registrationModuleName');
+            $scope.currentLocations = [];
+
+            var getCurrentLocations = function () {
+                // get the current locations into scope from rootScope
+                $scope.currentLocations = $rootScope.locations.locations;
+            };
             var getPersonAttributeTypes = function () {
                 return $rootScope.patientConfiguration.attributeTypes;
             };
@@ -95,6 +101,8 @@ angular.module('bahmni.registration')
                 $scope.patient = patient.create();
                 prepopulateDefaultsInFields();
                 expandSectionsWithDefaultValue();
+                getCurrentLocations();
+                $scope.patient['registrationLocation'] = $scope.loggedInLocation.display;
                 $scope.patientLoaded = true;
             };
 
