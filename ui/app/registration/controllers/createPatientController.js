@@ -16,7 +16,7 @@ angular.module('bahmni.registration')
 
             var getCurrentLocations = function () {
                 // get the current locations into scope from rootScope
-                $scope.currentLocations = $rootScope.locations;
+                $scope.currentLocations = $rootScope.locations.locations;
             };
             var getPersonAttributeTypes = function () {
                 return $rootScope.patientConfiguration.attributeTypes;

@@ -9,14 +9,14 @@
                     <article class="form-field">
                     <div class="field-attribute">
                         <label class="control-lable" for="selectLocation">
-                            Registration Location
+                            Registration Location 
                         </label>
                     </div>
                     <div class="field-value" id="currentLocations">
                         <select id="selectLocation"
+                                ng-model="loggedInLocation.uuid"
+                                ng-options="location.uuid as location.display for location in currentLocations"
                                 required>
-                                <option value="">--Select Location--</option>
-                                <option ng-repeat="location in currentLocations.locations" ng-value="location.uuid">{{location.display}}</option>
                         </select>
                     </div>
                 </article>
