@@ -1,6 +1,11 @@
 <div class="dashboard">
     <header class="reg-header">
         <div class="reg-header-right fr">
+            <button class="btn-user-info fl">
+                <a class="disabled">
+                    <img src="../images/help_icon.png" id="help-icon"> 
+                </a>
+            </button>
             <form class="change-location fl">
                 <select  ng-model="selectedLocationUuid" ng-change="onLocationChange()">
                     <option ng-repeat="location in locations | orderBy:'display'" ng-selected="isCurrentLocation(location)" value="{{location.uuid}}">
