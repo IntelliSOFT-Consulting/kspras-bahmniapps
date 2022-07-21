@@ -2,7 +2,7 @@
     <div class="opd-header-top">
         <header>
             <bm-back-links></bm-back-links>
-            <div class="fr">
+            <div class="fr meta-button">
                 <div class="retro-date-widget-wrapper"
                      show-if-privilege="{{retrospectivePrivilege}},{{onBehalfOfPrivilege}},{{locationPickerPrivilege}}"
                      ng-if="getTitle()">
@@ -12,6 +12,9 @@
                 </div>
             </div>
             <div ui-view="additional-header"></div>
+            <button class="btn-user-info fr" id="help-icon-button">
+                <img src="../images/help_icon.png" id="help-icon"> 
+            </button>
         </header>
     </div>
 </div>
