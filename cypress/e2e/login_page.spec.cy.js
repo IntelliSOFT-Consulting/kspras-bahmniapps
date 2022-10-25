@@ -1,19 +1,7 @@
 describe(`The user is able to see the labels and controls including text-boxes, buttons and labels on the Login Page and can interacted with.`, () => {
   beforeEach(() => {
     cy.visit("https://testkspras.intellisoftkenya.com/bahmni/home/index.html#/login")
-    /*cy.eyesOpen({
-      appName: "Login Page",
-      testName:
-        "Verify that all the labels and controls including text-boxes, buttons, and links are present on the Login page and can be interacted with",
-    });*/
   });
-
- /* it("Test1-Verifying visibility of the page objects", () => {
-    cy.eyesCheckWindow({
-      tag: "Main Page",
-      target: "window",
-      fully: true,
-    });*/
 
    it("test1-checks that the user can't  log in with wrong credentials",()=>{
       cy.get("#locale").select("string:en")
