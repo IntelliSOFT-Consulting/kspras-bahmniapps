@@ -272,3 +272,5 @@ it("test9-Initiates a consultation",()=>{
       cy.get('.confirm').click()
      
    
+    })
+})
