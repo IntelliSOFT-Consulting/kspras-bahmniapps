@@ -156,3 +156,119 @@ describe("Test components on this page",()=>{
 
       cy.get('.back-btn > .fa').click()
     })
+       it("test7-Initiates a visit for a client then goes back to the patient details form",()=>{
+      cy.get('.fa-user').click()
+      cy.wait(500)
+      cy.get(':nth-child(2) > a').click()
+  
+      cy.get('#name')
+      .should("be.visible")
+      .type("John Doe")
+  
+      cy.get(':nth-child(4) > .reg-srch-btn > button').click()
+      cy.get('tr > :nth-child(1) > a').click()
+      cy.get('span > .right').click()
+      
+      cy.get("#observation_1")
+      .type("170")
+      .should("be.visible")
+
+      cy.get("#observation_2")
+      .type("60")
+
+      cy.get(':nth-child(2) > .grid-row-element').click()
+
+      cy.get(':nth-child(2) > .grid-row-element').click()
+
+      cy.wait(3000)
+
+
+     
+    })
+    it("test8-Initiates a visit for a client,selects bank payment then saves the form",()=>{
+      cy.get('.fa-user').click()
+      cy.wait(500)
+      cy.get(':nth-child(2) > a').click()
+  
+      cy.get('#name')
+      .should("be.visible")
+      .type("John Doe")
+  
+      cy.get(':nth-child(4) > .reg-srch-btn > button').click()
+      cy.get('tr > :nth-child(1) > a').click()
+      cy.get('span > .right').click()
+      
+      cy.get("#observation_1")
+      .type("170")
+      .should("be.visible")
+
+      cy.get("#observation_2")
+      .type("60")
+
+      cy.get(':nth-child(3) > .grid-row-element').click()
+
+      cy.get('.confirm').click()
+     
+    })
+it("test9-Initiates a consultation",()=>{
+      cy.get('.fa-user').click()
+      cy.wait(500)
+      cy.get(':nth-child(2) > a').click()
+  
+      cy.get('#name')
+      .should("be.visible")
+      .type("John Doe")
+  
+      cy.get(':nth-child(4) > .reg-srch-btn > button').click()
+      cy.get('tr > :nth-child(1) > a').click()
+      cy.get('span > .right').click()
+      
+  
+      cy.get("#observation_1")
+      .type("160")
+      .should("be.visible")
+      
+
+      cy.get("#observation_2")
+      .type("60")
+
+      cy.get(':nth-child(3) > .grid-row-element').click()
+
+      cy.get('.confirm').click()
+
+      cy.wait(18000)
+
+      cy.get("#obervation_4").type("Headache")
+
+      cy.get('.btn--left').click()
+
+      
+
+      cy.get('.small-btn').click()
+
+      cy.get("#obervation_5").type("First time occurence")
+
+      cy.get("#obervation_6").type("Never experienced before")
+
+      cy.get("#obervation_7").type(" Should be monitored")
+    })
+    it("test10-Accessing the medication tab",()=>{
+
+      cy.get('.fa-user').click()
+      cy.wait(500)
+      cy.get(':nth-child(2) > a').click()
+  
+      cy.get('#name')
+      .should("be.visible")
+      .type("John Doe")
+  
+      cy.get(':nth-child(4) > .reg-srch-btn > button').click()
+      cy.get('tr > :nth-child(1) > a').click()
+      cy.wait(3000)
+      cy.get('span > .right').click()
+      cy.get('#observation_1').type("Headache")
+      cy.get("#observation_2").type("")
+
+      cy.get('.confirm').click()
+     
+   
