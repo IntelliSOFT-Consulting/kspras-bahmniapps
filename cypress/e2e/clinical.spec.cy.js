@@ -12,7 +12,7 @@ describe("Test components on this page",()=>{
   })
   it("test2-tests if all elements in the client registration form can be filled to enable registration",()=>{
   
-    cy.get('.fa-user').click()
+  cy.get('.fa-user').click()
 
    
    cy.get('.top-nav > :nth-child(3) > a > .nav-link').click()
@@ -51,13 +51,20 @@ describe("Test components on this page",()=>{
     .should("be.visible")
     .type("Bahati")
 
+    cy.wait(10000)
+
+
     cy.get("#stateProvince")
     .should("be.visible")
     .type("Nakuru")
+
+    .type("{downarrow}")
+    .type("{enter}")
     
     cy.get("#address2")
     .should("be.visible")
     .type("Nakuru")
+    
 
     cy.get("#address1")
     .should("be.visible")
@@ -181,8 +188,6 @@ describe("Test components on this page",()=>{
       cy.get(':nth-child(2) > .grid-row-element').click()
 
       cy.wait(3000)
-
-
      
     })
     it("test8-Initiates a visit for a client,selects bank payment then saves the form",()=>{
@@ -267,10 +272,36 @@ it("test9-Initiates a consultation",()=>{
       cy.wait(3000)
       cy.get('span > .right').click()
       cy.get('#observation_1').type("Headache")
-      cy.get("#observation_2").type("")
+      cy.get("#observation_2").type("60")
 
       cy.get('.confirm').click()
-     
-   
+        
+      })  
+    it("test11-Initiates a visit for a client then goes back to the patient details form",()=>{
+      cy.get('.fa-user').click()
+      cy.wait(500)
+      cy.get(':nth-child(2) > a').click()
+  
+      cy.get('#name')
+      .should("be.visible")
+      .type("John Doe")
+  
+      cy.get(':nth-child(4) > .reg-srch-btn > button').click()
+      cy.get('tr > :nth-child(1) > a').click()
+      cy.get('span > .right').click()
+      
+
+      cy.get("#observation_1").clear()
+      .type("170")
+      .should("be.visible")
+
+      cy.get("#observation_2").clear()
+      .type("60")
+
+      cy.get(':nth-child(2) > .grid-row-element').click()
+
+      cy.get(':nth-child(2) > .grid-row-element').click()
+
+      cy.wait(3000)
     })
-})
+  })
