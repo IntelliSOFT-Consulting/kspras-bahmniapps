@@ -378,7 +378,7 @@ it("test9-Initiates a consultation, makes observation then gets back to list of 
 
 
     })
-    it.only("test11-Beginning an investigation for radiology by searching for the investigation name",()=>{
+    it("test11-Beginning an investigation for radiology by searching for the investigation name",()=>{
       cy.get('.fa-user').click()
       cy.wait(500)
       cy.get(':nth-child(2) > a').click()
@@ -462,5 +462,70 @@ it("test9-Initiates a consultation, makes observation then gets back to list of 
 
 
     })
+    it("test12-WSurgical and non surgical management",()=>{
+      cy.get('.fa-user').click()
+      cy.wait(500)
+      cy.get(':nth-child(2) > a').click()
+  
+      cy.get('#name')
+      .should("be.visible")
+      .type("John Doe")
+  
+      cy.get(':nth-child(4) > .reg-srch-btn > button').click()
+      cy.get('tr > :nth-child(1) > a').click()
+      cy.get('span > .right').click()
+      
+      cy.wait(5000)
+  
+      cy.get("#observation_1")
+      .clear()
+      .type("160")
+      .should("be.visible")
+      
+
+      cy.get("#observation_2")
+      .clear()
+      .type("60")
+
+      cy.get(':nth-child(3) > .grid-row-element').click()
+
+      cy.get('.confirm').click()
+
+      cy.wait(15000)
+
+      cy.get('.btn--left').click()
+
+    cy.wait(5000)
+    cy.get('.header-tabs > :nth-child(4) > a').click()
+    //cy.get('.opd-header-bottom > .header-tabs > .tab-selected > a').click()
+    cy.get("#drug-name")
+    .type("Ibuprofen")
+
+    cy.get("#accept-button").click()
+
+    cy.get("#uniform-dose").type("6")
+
+    cy.get("#uniform-dose-unit").select("mg")
+
+    cy.get("#frequency").select("Every 6 hours")
     
+    cy.get("#duration").type("6")
+
+    cy.get("#duration-unit").select("Day(s)")
+
+    cy.get("#quantity").type("2")
+
+    cy.get("#total-quantity-unit").select("IU")
+
+    cy.get("#SOS").click()
+
+    cy.get("#instructions").select("Before meals")
+
+    cy.get("#additional-instructions").type("On demand")
+
+    cy.get('.add-drug-btn').click()
+
+    cy.get(".confirm").click()
+
   })
+})
