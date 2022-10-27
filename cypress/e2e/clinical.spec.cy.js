@@ -1,3 +1,4 @@
+
 describe("Test components on this page",()=>{
   beforeEach(()=>{
     cy.login("string:en","User","Userone@123","Kenyatta National Hospital")
@@ -215,7 +216,7 @@ describe("Test components on this page",()=>{
       cy.get('.confirm').click()
      
     })
-it("test9-Initiates a consultation",()=>{
+it("test9-Initiates a consultation, makes observation then gets back to list of active patients",()=>{
       cy.get('.fa-user').click()
       cy.wait(500)
       cy.get(':nth-child(2) > a').click()
@@ -228,56 +229,66 @@ it("test9-Initiates a consultation",()=>{
       cy.get('tr > :nth-child(1) > a').click()
       cy.get('span > .right').click()
       
+      cy.wait(5000)
   
       cy.get("#observation_1")
+      .clear()
       .type("160")
       .should("be.visible")
       
 
       cy.get("#observation_2")
+      .clear()
       .type("60")
 
       cy.get(':nth-child(3) > .grid-row-element').click()
 
       cy.get('.confirm').click()
 
-      cy.wait(18000)
+      cy.wait(15000)
 
-      cy.get("#obervation_4").type("Headache")
+    
 
       cy.get('.btn--left').click()
 
       
+      cy.wait(10000)
+      
+      cy.get("#observation_4").type("Headache")
 
       cy.get('.small-btn').click()
 
-      cy.get("#obervation_5").type("First time occurence")
-
-      cy.get("#obervation_6").type("Never experienced before")
-
-      cy.get("#obervation_7").type(" Should be monitored")
-    })
-    it("test10-Accessing the medication tab",()=>{
-
-      cy.get('.fa-user').click()
-      cy.wait(500)
-      cy.get(':nth-child(2) > a').click()
-  
-      cy.get('#name')
+      cy.get(".duration-value")
+      .type("7")
       .should("be.visible")
-      .type("John Doe")
-  
-      cy.get(':nth-child(4) > .reg-srch-btn > button').click()
-      cy.get('tr > :nth-child(1) > a').click()
-      cy.wait(3000)
-      cy.get('span > .right').click()
-      cy.get('#observation_1').type("Headache")
-      cy.get("#observation_2").type("60")
 
-      cy.get('.confirm').click()
-        
-      })  
-    it("test11-Initiates a visit for a client then goes back to the patient details form",()=>{
+      cy.get(".duration-unit")
+      .select("Days")
+
+
+
+      cy.get("#observation_5")
+      .clear()
+      .type("First time occurence")
+
+      /*cy.get("#observation_6")
+      .clear()
+      .type("Never experienced before")*/
+
+      cy.get("#observation_7")
+      .clear()
+      .type(" Should be monitored")
+
+
+      cy.get(':nth-child(1) > .grid-row-element').click()
+      cy.wait(100)
+      cy.get(".confirm").click()
+      cy.wait(500)
+
+      cy.get('#opd-tabs > .opd-header-bottom > bm-back-links > ul > li > #patients-link > .fa').click()
+      cy.wait(5000)
+    })
+    it("test10-begins consultation for an active patient then observes a summary of the entered details",()=>{
       cy.get('.fa-user').click()
       cy.wait(500)
       cy.get(':nth-child(2) > a').click()
@@ -290,18 +301,122 @@ it("test9-Initiates a consultation",()=>{
       cy.get('tr > :nth-child(1) > a').click()
       cy.get('span > .right').click()
       
-
-      cy.get("#observation_1").clear()
-      .type("170")
+      cy.wait(5000)
+  
+      cy.get("#observation_1")
+      .clear()
+      .type("160")
       .should("be.visible")
+      
 
-      cy.get("#observation_2").clear()
+      cy.get("#observation_2")
+      .clear()
       .type("60")
 
-      cy.get(':nth-child(2) > .grid-row-element').click()
+      cy.get(':nth-child(3) > .grid-row-element').click()
 
-      cy.get(':nth-child(2) > .grid-row-element').click()
+      cy.get('.confirm').click()
 
-      cy.wait(3000)
+      cy.wait(15000)
+
+    
+
+      cy.get('.btn--left').click()
+
+      
+      cy.wait(10000)
+      
+      cy.get("#observation_4")
+      .clear()
+      .type("Headache")
+
+      cy.get('.small-btn').click()
+
+      cy.get(".duration-value")
+      .clear()
+      .type("7")
+      .should("be.visible")
+
+      cy.get(".duration-unit")
+      .select("Days")
+
+
+
+      cy.get("#observation_5")
+      .clear()
+      .type("First time occurence")
+
+      /*cy.get("#observation_6")
+      .clear()
+      .type("Never experienced before")*/
+
+      cy.get("#observation_7")
+      .clear()
+      .type(" Should be monitored")
+
+
+      cy.get(':nth-child(1) > .grid-row-element').click()
+      cy.wait(100)
+      cy.get(".confirm").click()
+      cy.wait(500)
+
+      cy.get('#opd-tabs > .opd-header-bottom > bm-back-links > ul > li > #patients-link > .fa').click()
+      cy.wait(5000) 
+
+      cy.get(".active-patient").click()
+
+      cy.wait(1000)
+
+      cy.get('.btn--left').click()
+
+     // cy.get('.opd-header-bottom > .header-tabs > :nth-child(3) > a').click()
+      cy.wait(500)
+      cy.get('.opd-header-bottom > .header-tabs > :nth-child(2) > a').click()
+      cy.wait(500)
+
+      cy.get('.ng-pristine').type("Will progress on well")
+
+
     })
+    it.only("test10-Beginning an investigation for radiology by searching for the investigation name",()=>{
+      cy.get('.fa-user').click()
+      cy.wait(500)
+      cy.get(':nth-child(2) > a').click()
+  
+      cy.get('#name')
+      .should("be.visible")
+      .type("John Doe")
+  
+      cy.get(':nth-child(4) > .reg-srch-btn > button').click()
+      cy.get('tr > :nth-child(1) > a').click()
+      cy.get('span > .right').click()
+      
+      cy.wait(5000)
+  
+      cy.get("#observation_1")
+      .clear()
+      .type("160")
+      .should("be.visible")
+      
+
+      cy.get("#observation_2")
+      .clear()
+      .type("60")
+
+      cy.get(':nth-child(3) > .grid-row-element').click()
+
+      cy.get('.confirm').click()
+
+      cy.wait(15000)
+
+      cy.get('.btn--left').click()
+
+      //cy.get('.opd-header-bottom > .header-tabs > .tab-selected > a').click()
+      cy.get('.opd-header-bottom > .header-tabs > :nth-child(3) > a').click()
+
+      cy.get('.field-value').type("chest ap{enter}")//making selection for chest investigation
+      cy.get(':nth-child(1) > .grid-row-element').click()
+
+    })
+    
   })
