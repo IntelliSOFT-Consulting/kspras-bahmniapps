@@ -9,7 +9,7 @@ describe("Test components on this page",()=>{
     .should("be.visible")
 
     cy.get("#patientIdentifier")
-    .type("Dennis Michael{enter}")
+    .type("John Doe{enter}")
 
     cy.wait(500)
     
