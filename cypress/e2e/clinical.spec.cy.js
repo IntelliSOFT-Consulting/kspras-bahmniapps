@@ -378,7 +378,7 @@ it("test9-Initiates a consultation, makes observation then gets back to list of 
 
 
     })
-    it.only("test10-Beginning an investigation for radiology by searching for the investigation name",()=>{
+    it.only("test11-Beginning an investigation for radiology by searching for the investigation name",()=>{
       cy.get('.fa-user').click()
       cy.wait(500)
       cy.get(':nth-child(2) > a').click()
@@ -416,6 +416,50 @@ it("test9-Initiates a consultation, makes observation then gets back to list of 
 
       cy.get('.field-value').type("chest ap{enter}")//making selection for chest investigation
       cy.get(':nth-child(1) > .grid-row-element').click()
+
+      //selection for neck
+      cy.get('.multi-select-lab-tests > ul > :nth-child(2) > a').click()
+      cy.get('.orderBtnContainer > ul > li > .grid-row-element').click()
+
+      cy.get(':nth-child(3) > .active').click()
+      cy.get('.orderBtnContainer > ul > li > .grid-row-element').click()
+
+      cy.get('.multi-select-lab-tests > ul > :nth-child(4) > a').click()
+      cy.get('.orderBtnContainer > ul > li > .grid-row-element').click()
+
+      cy.get('.multi-select-lab-tests > ul > :nth-child(5) > a').click()
+      cy.get('.orderBtnContainer > ul > li > .grid-row-element').click()
+
+      cy.get(':nth-child(6) > a').click()
+      cy.get(':nth-child(1) > .grid-row-element').click()
+
+      cy.get(':nth-child(7) > a').click()
+      cy.get(':nth-child(2) > .grid-row-element').click()
+
+      cy.get(':nth-child(8) > a').click()
+      cy.get(':nth-child(3) > .grid-row-element').click()
+
+      cy.get(':nth-child(9) > a').click()
+      cy.get(':nth-child(2) > .grid-row-element').click()
+
+      cy.get(':nth-child(10) > a').click()
+      cy.get(':nth-child(1) > .grid-row-element').click()
+
+      cy.get(':nth-child(11) > a').click()
+      cy.get(':nth-child(3) > .grid-row-element').click()
+
+      cy.get(':nth-child(12) > a').click()
+      cy.get(':nth-child(5) > .grid-row-element').click()
+
+      cy.get(':nth-child(13) > a').click()
+      cy.get(':nth-child(5) > .grid-row-element').click()
+
+      cy.get(':nth-child(14) > a').click()
+      cy.get(':nth-child(5) > .grid-row-element').click()
+
+      cy.get(':nth-child(15) > a').click()
+      cy.get(':nth-child(7) > .grid-row-element').click()
+
 
     })
     
